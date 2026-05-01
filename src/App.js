@@ -1,6 +1,7 @@
-import "./App.css";
+import "./App.scss";
 import Navbar from "./Componets/Navbar/Index";
 import { Routes, Route } from "react-router-dom";
+
 import Home from "./Containers/Home/Index";
 import About from "./Containers/About/Index";
 import Resume from "./Containers/Resume/Index";
@@ -12,14 +13,16 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/Resume" element={<Resume />} />
-        <Route path="/Skills" element={<Skills />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/Contact" element={<Contact />} />
-      </Routes>
+      <div className="App__main-main-page-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Resume" element={<Resume />} />
+          <Route path="/Skills" element={<Skills />} />
+          <Route path="/Portfolio" element={<Portfolio />} />
+          <Route path="/Contact" element={<Contact />} />
+        </Routes>
+      </div>
     </div>
   );
 }

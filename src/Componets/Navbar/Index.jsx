@@ -24,7 +24,7 @@ const data = [
   },
   {
     label: "Portfolio",
-    to: "/",
+    to: "/Portfolio",
   },
   {
     label: "Contact",
@@ -49,15 +49,17 @@ const Navbar = () => {
           className={`navbar__container__menu ${!toggleIcon ? "active" : ""}`}
         >
           {data.map((item, index) => (
-            <li key={index} className="navbar__container__menu__links">
-              <Link to={item.to}>{item.label}</Link>
+            <li key={index} className="navbar__container__menu__item">
+              <Link
+                className="navbar__container__menu__item__links"
+                to={item.to}
+              >
+                {item.label}
+              </Link>
             </li>
           ))}
         </ul>
-        <div
-          className="navbar__container__menu__icon"
-          onClick={handleToggleIcon}
-        >
+        <div className="nav-icon" onClick={handleToggleIcon}>
           {toggleIcon ? <FaBars size={30} /> : <HiX size={30} />}
         </div>
       </nav>
