@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* ✅ pushes h2 to left, icon to right */
+  padding: 20px;
+  border-bottom: 1px dashed var(--yellow-theme-main-color);
+
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: capitalize;
+    color: var(--yellow-theme-main-color);
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+
+    svg {
+      color: var(--yellow-theme-main-color);
+      font-size: 3.5rem;
+    }
+  }
+}

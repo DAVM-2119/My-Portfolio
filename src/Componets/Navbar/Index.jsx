@@ -1,42 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Style.scss";
 import { FaBars, FaReact } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { HiX } from "react-icons/hi";
-import { useState } from "react";
-const data = [
-  {
-    label: "Home",
-    to: "/",
-  },
-  {
-    label: "About",
-    to: "/About",
-  },
-  {
-    label: "Skills",
-    to: "/Skills",
-  },
 
-  {
-    label: "Resume",
-    to: "/Resume",
-  },
-  {
-    label: "Portfolio",
-    to: "/Portfolio",
-  },
-  {
-    label: "Contact",
-    to: "/Contact",
-  },
+const data = [
+  { label: "Home", to: "/" },
+  { label: "About", to: "/About" },
+  { label: "Skills", to: "/Skills" },
+  { label: "Resume", to: "/Resume" },
+  { label: "Portfolio", to: "/Portfolio" },
+  { label: "Contact", to: "/Contact" },
 ];
 
 const Navbar = () => {
   const [toggleIcon, setToggleIcon] = useState(true);
+
   const handleToggleIcon = () => {
     setToggleIcon(!toggleIcon);
+    // ✅ add/remove class on body
+    document.body.classList.toggle("menu-open");
   };
+
+  const closeMenu = () => {
+    setToggleIcon(true);
+    document.body.classList.remove("menu-open"); // ✅ remove on navigate
+  };
+
   return (
     <div>
       <nav className="navbar">
@@ -53,6 +43,7 @@ const Navbar = () => {
               <Link
                 className="navbar__container__menu__item__links"
                 to={item.to}
+                onClick={closeMenu}
               >
                 {item.label}
               </Link>
@@ -66,4 +57,5 @@ const Navbar = () => {
     </div>
   );
 };
+
 export default Navbar;
