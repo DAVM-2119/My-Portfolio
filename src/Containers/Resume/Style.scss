@@ -17,7 +17,7 @@
       gap: 30px;
 
       &__title {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         gap: 15px;
         font-size: 2.4rem;
@@ -27,7 +27,14 @@
         letter-spacing: 2px;
         padding-bottom: 15px;
         border-bottom: 2px dashed var(--yellow-theme-main-color);
-        display: inline-flex;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.6s ease;
+
+        &.animate {
+          opacity: 1; /* ✅ fade in title */
+          transform: translateY(0);
+        }
       }
 
       &__item {
@@ -35,10 +42,40 @@
         border-left: 3px solid var(--yellow-theme-main-color);
         background: rgba(255, 221, 64, 0.03);
         border-radius: 0 8px 8px 0;
-        transition: background 0.3s ease;
+        transition:
+          background 0.3s ease,
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        opacity: 0; /* ✅ hidden by default */
+
+        // ✅ slide from left - education items
+        &.slide-left {
+          transform: translateX(-60px);
+          transition:
+            opacity 0.6s ease,
+            transform 0.6s ease,
+            background 0.3s ease;
+        }
+
+        // ✅ slide from right - experience items
+        &.slide-right {
+          transform: translateX(60px);
+          transition:
+            opacity 0.6s ease,
+            transform 0.6s ease,
+            background 0.3s ease;
+        }
+
+        // ✅ triggered by IntersectionObserver
+        &.animate {
+          opacity: 1;
+          transform: translateX(0);
+        }
 
         &:hover {
-          background: rgba(255, 221, 64, 0.07); /* ✅ subtle hover */
+          background: rgba(255, 221, 64, 0.07);
+          transform: translateX(5px) !important; /* ✅ subtle hover shift */
+          box-shadow: -3px 0 15px rgba(255, 221, 64, 0.1);
         }
 
         &__header {
@@ -62,6 +99,7 @@
             border: 1px solid var(--yellow-theme-main-color);
             padding: 4px 10px;
             border-radius: 20px;
+            animation: pulse 2s infinite; /* ✅ pulsing date badge */
           }
         }
 
@@ -83,6 +121,19 @@
   }
 }
 
+// ✅ Pulse animation for date badges
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 221, 64, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(255, 221, 64, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 221, 64, 0);
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .resume__content {
     flex-direction: column;
@@ -91,7 +142,6 @@
 
   .resume__content__section__item__header {
     flex-direction: column !important;
-
     .date {
       align-self: flex-start;
     }

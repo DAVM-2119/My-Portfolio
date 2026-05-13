@@ -178,27 +178,55 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .about__content {
-    flex-direction: column !important;
+  .about {
+    padding: 10px; /* ✅ reduce padding on mobile */
+
+    &__content {
+      flex-direction: column !important;
+      padding: 15px 0; /* ✅ reduce content padding */
+      gap: 20px;
+    }
+
+    &__content__left {
+      width: 100%; /* ✅ full width */
+      min-width: 0;
+
+      h3 {
+        font-size: 2rem; /* ✅ smaller heading */
+      }
+
+      p {
+        font-size: 1.4rem; /* ✅ smaller text */
+      }
+    }
+
+    &__content__left__details__item {
+      flex-direction: column; /* ✅ stack label and value */
+      gap: 2px;
+
+      .label {
+        min-width: unset; /* ✅ remove fixed width */
+      }
+    }
   }
 
   .orbit-container {
-    width: 260px;
-    height: 260px;
+    width: 240px;
+    height: 240px;
 
     .orbit-globe {
-      width: 120px;
-      height: 120px;
+      width: 110px;
+      height: 110px;
     }
 
     &::before {
-      width: 230px;
-      height: 230px;
+      width: 210px;
+      height: 210px;
     }
 
     .orbit-icon {
-      width: 230px;
-      height: 230px;
+      width: 210px;
+      height: 210px;
     }
   }
 }

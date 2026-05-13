@@ -1,25 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-:root{
-  --yellow-theme-background-color : #1d1d1d;
-  --yellow-theme-main-color:#ffdd40;
-  --yellow-theme-sub-text-color:#ffffff;
-  --yellow-theme-nav-background-color:#181818;
-}
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
-html{
-  font-size:62.5%;
-  height:100%;
 
+:root {
+  --yellow-theme-background-color: #1d1d1d;
+  --yellow-theme-main-color: #ffdd40;
+  --yellow-theme-sub-text-color: #ffffff;
+  --yellow-theme-nav-background-color: #181818;
 }
-body{
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
   background: var(--yellow-theme-background-color);
-  height:100%;
+  height: 100%;
+  overflow-x: hidden; /* ✅ prevent horizontal scroll */
 }
-#root{
-  height:100%;
+
+#root {
+  height: 100%;
+  overflow-x: hidden; /* ✅ prevent horizontal scroll */
+}
+
+section {
+  width: 100%;
+  overflow-x: hidden; /* ✅ all sections full width */
+}
+
+/* ✅ fix text cutoff on small screens */
+@media only screen and (max-width: 768px) {
+  #root {
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
 }

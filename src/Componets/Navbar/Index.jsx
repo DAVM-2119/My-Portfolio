@@ -13,25 +13,29 @@ const data = [
   { label: "Contact", to: "/Contact" },
 ];
 
-const Navbar = () => {
+const Navbar = ({ onMenuToggle }) => {
   const [toggleIcon, setToggleIcon] = useState(true);
 
   const handleToggleIcon = () => {
-    setToggleIcon(!toggleIcon);
-    // ✅ add/remove class on body
-    document.body.classList.toggle("menu-open");
+    const newState = !toggleIcon;
+    setToggleIcon(newState);
+    if (typeof onMenuToggle === "function") {
+      onMenuToggle(!newState);
+    }
   };
 
   const closeMenu = () => {
     setToggleIcon(true);
-    document.body.classList.remove("menu-open"); // ✅ remove on navigate
+    if (typeof onMenuToggle === "function") {
+      onMenuToggle(false);
+    }
   };
 
   return (
     <div>
       <nav className="navbar">
         <div className="navbar__container">
-          <Link to={"/"} className="navbar__container__logo">
+          <Link to="/" className="navbar__container__logo">
             <FaReact size={30} />
           </Link>
         </div>
